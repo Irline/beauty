@@ -151,25 +151,34 @@ body {
 }
 .carousel {
   position: relative;
-  width: 100%;              /* ширина 100% от контейнера */
-  max-width: 800px;         /* максимум */
-  margin: 40px auto;
   overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
-  width: 100%;
 }
 
-.carousel img {
-  flex: 0 0 100%;   /* каждый слайд занимает 100% ширины контейнера */
-  width: 100%;              /* подстраивается под ширину */
-  height: 50vh;             /* высота = половина экрана */
-  object-fit: cover;        /* не растягивает */
+.carousel-slide {
+  flex: 0 0 100%;
+  text-align: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.slide-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #DA2528; /* яркий акцент */
 }
 
 .carousel-btn {

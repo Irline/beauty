@@ -1,5 +1,5 @@
 const track = document.querySelector(".carousel-track");
-const slides = Array.from(track.children);
+const slides = Array.from(document.querySelectorAll(".carousel-slide"));
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 const dotsContainer = document.querySelector(".carousel-dots");
@@ -22,13 +22,12 @@ slides.forEach((_, i) => {
 const dots = Array.from(dotsContainer.children);
 
 function updateSlide() {
-  const slideWidth = carousel.offsetWidth; // ширина контейнера
+  const slideWidth = carousel.offsetWidth;
   track.style.transform = `translateX(-${index * slideWidth}px)`;
   dots.forEach(dot => dot.classList.remove("active"));
   dots[index].classList.add("active");
 }
 
-// Кнопки
 nextBtn.addEventListener("click", () => {
   index = (index + 1) % slides.length;
   updateSlide();
@@ -39,14 +38,10 @@ prevBtn.addEventListener("click", () => {
   updateSlide();
 });
 
-// Автопрокрутка
 setInterval(() => {
   index = (index + 1) % slides.length;
   updateSlide();
 }, 4000);
 
-// Пересчет при изменении ширины экрана
 window.addEventListener("resize", updateSlide);
-
-// Первый вызов
 updateSlide();
