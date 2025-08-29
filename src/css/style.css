@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+:root{
+    --body-bg-color: rgb(255 255 255 / 94%);
+    --boxShadow: rgb(218, 37, 40);
+    --block-main-color: rgb(255 128 0 / 93%);
+    --text-menu-color: rgb(255, 255, 255);
+    --btn-color:rgb(23, 98, 153);
+    --text-color: rgb(0, 0, 0);
+   
+}
+
+body {
+    background: url("../img/bagraund.jpg");
+  background-size: cover; /* чтобы растягивался */
+  margin: 0;
+}
+#body {
+    max-width: 1512px; 
+    margin: 0 auto;    
+    width: 100%;
+}
+.header {
+    width: 97%;
+    border-radius: 0 0 20px 20px;
+    height: auto;
+    margin: 0dvw auto;
+    height: 200px;
+    background-image: url(../img/heder.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 20px var(--boxShadow);
+    z-index: 101;
+    position: relative;
+    /* background-color: var(--block-main-color); */
+}
+.heder_logo img{
+    width: 25dvw;
+    height: auto;
+}
+.heder_logo:hover {
+    transform: scale(1.2) translateY(5px);
+}
+
+
+/* Общий стиль меню */
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex; /* горизонтальное меню */
+  
+}
+
+.menu ul li {
+  position: relative; /* нужно для вложенных списков */
+}
+
+.menu ul li a {
+  display: flex;
+  padding: 2dvw 7dvw 2dvw 0dvw;
+  text-decoration: none;
+  color: var(--text-menu-color);
+  font-weight: 700;
+  font-size: large;
+  transition: 0.3s;
+}
+.color_menu {
+     text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+}
+
+.menu ul li a:hover {
+    transform: scale(1.2) translateY(5px);
+  /* background: #DA2528; /* красный из твоей палитры */
+    color: white; 
+    text-shadow:none;
+}
+
+/* Скрываем подменю */
+.menu ul li ul.submenu {
+  display: none;
+  position: absolute;
+  top: 100%; /* ниже основного пункта */
+  left: 0;
+  background: var(--body-bg-color);
+  padding: 10px 0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 1000;
+}
+.header_lang img{
+  width: 6dvw;
+  height: auto;
+  margin-right: 3dvw;
+}
+
+/* Делаем вертикальный список */
+.menu ul li ul.submenu li a {
+  padding: 10px 15px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.menu ul li ul.submenu li a:hover {
+  background: #DA2528;
+  color: #fff;
+}
+
+/* Показываем подменю при наведении */
+.menu ul li:hover > ul.submenu {
+  display: flex;
+}
+/* основной контент */
+.main {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 2dvw 2dvw 2dvw;
+  background-color: var(--body-bg-color);
+  box-shadow: 0 6px 20px var(--boxShadow);
+}
+.main_info {
+  text-align: center;
+  padding: 2dvw 3dvw;
+}
+.main_info h1 {
+  margin: 2dvw 0;
+}
+
+.main_line {
+ width: 100%;
+ height: 1dvw;
+ background-image: url(../img/main_line.png);
+  background-repeat: repeat-x;   /* повторяем по горизонтали */
+  background-size: auto 100%;    /* подгоняем по высоте, ширина авто */
+  background-position: center;   /* выравнивание */
+}
+.carousel {
+  position: relative;
+  width: 100%;              /* ширина 100% от контейнера */
+  max-width: 800px;         /* максимум */
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.carousel img {
+  flex: 0 0 100%;   /* каждый слайд занимает 100% ширины контейнера */
+  width: 100%;              /* подстраивается под ширину */
+  height: 50vh;             /* высота = половина экрана */
+  object-fit: cover;        /* не растягивает */
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.carousel-dots {
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.carousel-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  margin: 5px;
+  background: rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+
+.carousel-dots .active {
+  background: white;
+}
+.main_info_bos_h2 {
+  text-align: center;
+  margin: 2dvw auto;
+}
+.main_info_bos {
+  display: flex;                /* карточки рядом */
+  gap: 20px;                    /* расстояние между ними */
+  justify-content: center;
+  flex-wrap: nowrap;              /* отсутсвие переноса карточек*/
+}
+
+.main_card {
+  display: flex;
+  flex-direction: column;       /* элементы сверху вниз */
+  justify-content: space-between; /* чтобы кнопка всегда была внизу */
+  align-items: center;
+  width: 388px;
+  min-height: 450px;            /* одинаковая высота */
+  padding: 12px;
+  box-shadow: 0px 9px 16px 0px var(--boxShadow);
+  border-radius: 15px;
+  text-align: center;
+}
+
+.main_card h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.main_card p {
+  flex-grow: 1;                 /* текст занимает свободное место */
+  margin-bottom: 15px;
+}
+
+.main_card_img img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;            /* картинка обрезается без искажений */
+  border-radius: 10px;
+}
+
+
+.main_card_btn {
+  margin-top: 15px;
+  padding: 10px 60px;
+  background: var(--Buttons-red);
+  color: #fff;
+  border: none;
+  background-color: var(--btn-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main_card_btn:hover {
+  transform: scale(1.05);
+  background: darkred;
+}
+.main_list_info a {
+  display: flex;
+  flex-direction: column;
+  gap: 1dvw;
+  justify-content: space-between;
+}
+.main_list_info h3 {
+  text-align: start;
+}
+.main_list_img {
+  padding: 0 2dvw;
+}
+.main_list_img:hover {
+  transform: scale(2);
+  translate: 5px;
+}
+.main_list {
+  display: grid;
+  gap: 2dvw;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "i1 i2 i3"
+    "i4 i5 i6"
+    "i7 i8 i9";
+}
+.main_list_1 a,
+.main_list_2 a,
+.main_list_3 a,
+.main_list_4 a,
+.main_list_5 a,
+.main_list_6 a,
+.main_list_7 a,
+.main_list_8 a,
+.main_list_9 a
+{
+  text-decoration: none;
+  color: var(--text-color);
+}
+.main_list_1 {
+  grid-area: i1;
+}
+.main_list_2 {
+  grid-area: i2;
+}
+.main_list_3 {
+  grid-area: i3;
+}
+.main_list_4 {
+  grid-area: i4;
+}
+.main_list_5 {
+  grid-area: i5;
+}
+.main_list_6 {
+  grid-area: i6;
+}
+.main_list_7 {
+  grid-area: i7;
+}
+.main_list_8 {
+  grid-area: i8;
+}
+.main_list_9 {
+  grid-area: i9;
+}
+.main_list_1,
+.main_list_2,
+.main_list_3,
+.main_list_4,
+.main_list_5,
+.main_list_6,
+.main_list_7,
+.main_list_8,
+.main_list_9 {
+  display: flex;
+  gap: 0.5dvw;
+  padding: 0.5dvw;
+  box-shadow: 0px 9px 16px 0px var(--boxShadow);
+  border-radius: 5px;
+  align-items: center;
+  justify-content: space-around;
+  height: 24dvh;
+}
+.main_itog {
+  margin: 2dvh 2dvw;
+  text-align: center;
+  padding: 3dvw;
+  color: var(--text-menu-color);
+  text-shadow: 
+        -1px -1px 0 black,  
+         1px -1px 0 black,
+        -1px  1px 0 black,
+         1px  1px 0 black;
+  font-size: 17px;
+  font-weight: 400;
+  
+}
+
+.footer {
+    width: 97%;
+    margin: 0dvw auto;
+    border-radius: 20px 20px 0 0;
+    height: 20dvh;
+    box-shadow: 0px -1px 20px 2px var(--boxShadow);
+    background-color: var(--block-main-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+  }
+   
+
+
+
+
+
+
+
+
+
+
+
+/* Показываем на десктопе при наведении 
+<nav class="menu">
+  <ul>
+    <li><a href="index.html">Главная</a></li>
+
+    <li class="has-submenu">
+      <a href="#">Собаки</a>
+      <button class="submenu-toggle">+</button>
+      <ul class="submenu">
+        <li><a href="producers.html">Производители</a></li>
+        <li><a href="puppies.html">Щенки</a></li>
+        <li><a href="sales.html">Продажа</a></li>
+      </ul>
+    </li>
+
+    <li class="has-submenu">
+      <a href="#">Контакты</a>
+      <button class="submenu-toggle">+</button>
+      <ul class="submenu">
+        <li><a href="contact.html">Связаться</a></li>
+        <li><a href="services.html">Услуги</a></li>
+        <li><a href="info.html">Полезная информация</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+@media (min-width: 1000px) {
+  .menu ul li:hover > ul.submenu {
+    display: flex;
+  }
+  .submenu-toggle {
+    display: none; /* на ПК кнопка не нужна */
+  /* }
+} */
+
+/* На мобильном — бургер 
+@media (max-width: 999px) {
+  .menu ul {
+    flex-direction: column;
+  }
+
+  .submenu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px;
+  }
+
+  .menu ul li ul.submenu {
+    position: static;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .menu ul li.open > ul.submenu {
+    display: flex; /* раскрытие по клику */
+  /* }
+}
+document.querySelectorAll(".submenu-toggle").forEach(button => {
+  button.addEventListener("click", function () {
+    const parentLi = this.parentElement;
+    parentLi.classList.toggle("open");
+  });
+});  */
