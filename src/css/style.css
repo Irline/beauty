@@ -438,7 +438,7 @@ body {
   }
   .contact_developer {
     text-align: right;
-    
+    margin: 0 3dvw 3dvw 0;
     cursor: pointer;
   }
   .contact_developer a {
@@ -650,6 +650,7 @@ body {
   text-align: center;
 }
 }
+
 
 
 
