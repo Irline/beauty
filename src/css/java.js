@@ -45,3 +45,35 @@ setInterval(() => {
 
 window.addEventListener("resize", updateSlide);
 updateSlide();
+
+
+
+// === Бургер-меню ===
+const burger = document.getElementById('burger');
+const menu = document.querySelector('.menu');
+const submenuLinks = document.querySelectorAll('.has-submenu > a');
+
+// Открытие/закрытие основного меню
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  menu.classList.toggle('active');
+});
+
+// Открытие/закрытие подменю при клике
+submenuLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    // Отменяем переход по ссылке "#"
+    e.preventDefault();
+
+    // Закрываем другие подменю (если хочешь, можно убрать этот блок)
+    submenuLinks.forEach(otherLink => {
+      if (otherLink !== link) {
+        otherLink.parentElement.classList.remove('show-submenu');
+      }
+    });
+
+    // Переключаем текущее подменю
+    const parent = link.parentElement;
+    parent.classList.toggle('show-submenu');
+  });
+});

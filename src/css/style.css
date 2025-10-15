@@ -6,16 +6,17 @@
 }
 :root{
     --body-bg-color: rgb(255 255 255 / 94%);
-    --boxShadow: rgb(218, 37, 40);
-    --block-main-color: rgb(255 128 0 / 93%);
+    --boxShadow: rgb(95 42 0);
+    --block-main-color: rgb(95 42 0 / 93%);
     --text-menu-color: rgb(255, 255, 255);
-    --btn-color:rgb(23, 98, 153);
+    --btn-color:rgb(137, 8, 46);
+    --btn-color-hover: rgb(246, 17, 17);
     --text-color: rgb(0, 0, 0);
    
 }
 
 body {
-    background: url("../img/bagraund.jpg");
+    background: url("../img/bagraund.png");
   background-size: cover; /* чтобы растягивался */
   margin: 0;
 }
@@ -34,6 +35,7 @@ body {
     background-size: cover;
     background-position: center;
     display: flex;
+     padding: 10px 20px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -102,10 +104,19 @@ body {
   min-width: 180px;
   z-index: 1000;
 }
+.header_lang {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
 .header_lang img{
   width: 6dvw;
   height: auto;
-  margin-right: 3dvw;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.header_lang img:hover {
+  transform: scale(1.1);
 }
 
 /* Делаем вертикальный список */
@@ -116,7 +127,7 @@ body {
 }
 
 .menu ul li ul.submenu li a:hover {
-  background: #DA2528;
+  background: var(--btn-color-hover);
   color: #fff;
 }
 
@@ -124,6 +135,36 @@ body {
 .menu ul li:hover > ul.submenu {
   display: flex;
 }
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.burger span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--text-menu-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* При активном состоянии (крестик) */
+.burger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
 /* основной контент */
 .main {
   width: 90%;
@@ -165,6 +206,13 @@ body {
 .carousel-slide {
   flex: 0 0 100%;
   text-align: center;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.carousel-slide:hover {
+  opacity: 0.9; /* лёгкий эффект при наведении */
+  transition: opacity 0.3s ease;
 }
 
 .carousel-slide img {
@@ -178,7 +226,7 @@ body {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #DA2528; /* яркий акцент */
+  color: var(--boxShadow)
 }
 
 .carousel-btn {
@@ -265,20 +313,19 @@ body {
 
 
 .main_card_btn {
-  margin-top: 15px;
-  padding: 10px 60px;
-  background: var(--Buttons-red);
-  color: #fff;
-  border: none;
+  display: inline-block;
   background-color: var(--btn-color);
-  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .main_card_btn:hover {
   transform: scale(1.05);
-  background: darkred;
+  background: var(--btn-color-hover);
 }
 .main_list_info a {
   display: flex;
@@ -361,7 +408,7 @@ body {
   border-radius: 5px;
   align-items: center;
   justify-content: space-around;
-  height: 24dvh;
+  height: 15dvh;
 }
 .main_itog {
   margin: 2dvh 2dvw;
@@ -389,82 +436,211 @@ body {
     background-size: cover;
     background-position: center; 
   }
-   
-
-
-
-
-
-
-
-
-
-
-
-/* Показываем на десктопе при наведении 
-<nav class="menu">
-  <ul>
-    <li><a href="index.html">Главная</a></li>
-
-    <li class="has-submenu">
-      <a href="#">Собаки</a>
-      <button class="submenu-toggle">+</button>
-      <ul class="submenu">
-        <li><a href="producers.html">Производители</a></li>
-        <li><a href="puppies.html">Щенки</a></li>
-        <li><a href="sales.html">Продажа</a></li>
-      </ul>
-    </li>
-
-    <li class="has-submenu">
-      <a href="#">Контакты</a>
-      <button class="submenu-toggle">+</button>
-      <ul class="submenu">
-        <li><a href="contact.html">Связаться</a></li>
-        <li><a href="services.html">Услуги</a></li>
-        <li><a href="info.html">Полезная информация</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-@media (min-width: 1000px) {
-  .menu ul li:hover > ul.submenu {
-    display: flex;
-  }
-  .submenu-toggle {
-    display: none; /* на ПК кнопка не нужна */
-  /* }
-} */
-
-/* На мобильном — бургер 
-@media (max-width: 999px) {
-  .menu ul {
-    flex-direction: column;
-  }
-
-  .submenu-toggle {
-    background: none;
-    border: none;
-    font-size: 20px;
+  .contact_developer {
+    text-align: right;
+    
     cursor: pointer;
-    margin-left: auto;
-    padding: 10px;
+  }
+  .contact_developer a {
+    text-decoration: none;
+    color: var(--text-menu-color);
+  }
+@media (max-width: 777px) {
+  /* === ШАПКА === */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    position: relative;
+    height: 35dvw;
   }
 
-  .menu ul li ul.submenu {
+  /* === ЛОГОТИП (СЛЕВА) === */
+  .heder_logo {
+    order: 1;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .heder_logo img {
+    width: 38dvw;
+    height: auto;
+  }
+
+  /* === ИКОНКА ЯЗЫКА (ПО ЦЕНТРУ) === */
+  .header_lang {
+    order: 2;
+    flex: 1;
+    display: flex;
+    justify-content: center;
     position: static;
-    box-shadow: none;
-    padding-left: 20px;
   }
 
-  .menu ul li.open > ul.submenu {
-    display: flex; /* раскрытие по клику */
-  /* }
+  .header_lang img {
+    width: 14dvw;
+    height: auto;
+  }
+
+  /* === БУРГЕР (СПРАВА) === */
+  .burger {
+    order: 3;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    width: 35px;
+    height: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+    gap: 1dvw;
+    margin-right: 15px;
+    align-items: flex-end;
+  }
+
+  .burger span {
+    display: block;
+    height: 4px;
+    width: 30%;
+    background: var(--text-menu-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .burger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* === МЕНЮ === */
+  .menu ul {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 35dvw;
+    right: 0;
+    height: 95dvw;
+    background: var(--block-main-color);
+    width: 70%;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+
+    /* плавное открытие/закрытие */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 20px;
+    transition:
+      max-height 0.4s ease-in-out,
+      opacity 0.4s ease-in-out,
+      padding 0.3s ease-in-out;
+  }
+
+  .menu.active ul {
+    max-height: 400px;
+    opacity: 1;
+    padding: 20px;
+  }
+
+  .menu ul li {
+    margin-bottom: 1dvw;
+    position: relative;
+  }
+
+  .menu ul li a {
+    font-size: 10dvw;
+    padding: 1dvw;
+    display: block;
+  }
+
+  /* === ПОДМЕНЮ === */
+  .menu ul li ul.submenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: var(--block-main-color);
+    padding-left: 1dvw;
+    margin-top: 1dvw;
+    width: auto;
+    border-left: 2px solid var(--text-menu-color);
+
+    /* для плавного открытия */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height 0.4s ease-in-out,
+      opacity 0.4s ease-in-out,
+      margin-top 0.3s ease-in-out;
+  }
+
+  /* при клике добавляется класс show-submenu из твоего JS */
+  .menu ul li.show-submenu >ul.submenu {
+    max-height: 300px; /* регулируй под количество пунктов */
+    height: 32dvw;
+    opacity: 1;
+    margin-top: 8px;
+  }
+
+  .menu ul li ul.submenu li a {
+    padding: 0dvw 0dvw;
+    font-size: 5dvw;
+    color: var(--text-menu-color);
+  }
+
+  .menu ul li ul.submenu li a:hover {
+    background: var(--btn-color-hover);
+    color: white;
+  }
+  /* иконки контактов */
+  .main_info_bos {
+    display: flex;
+    gap: 2dvw;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
 }
-document.querySelectorAll(".submenu-toggle").forEach(button => {
-  button.addEventListener("click", function () {
-    const parentLi = this.parentElement;
-    parentLi.classList.toggle("open");
-  });
-});  */
+.main_card {
+  width: 80dvw;
+  padding: 1dvw;
+  margin: 0 auto;
+}
+.main_list_8 {
+  display: none;
+}
+   .main_list {
+    display: grid;
+    gap: 2dvw;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "i1 i2 "
+        "i3 i4"
+        "i5 i6"
+        "i7 i9";
+}
+.main_list_1, 
+.main_list_2, 
+.main_list_3, 
+.main_list_4, 
+.main_list_5, 
+.main_list_6, 
+.main_list_7, 
+.main_list_8, 
+.main_list_9 {
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.main_list_info h3 {
+    text-align: center;
+}
+.main_list_info p {
+  display: flex;
+  text-align: center;
+}
+}
