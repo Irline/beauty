@@ -640,6 +640,7 @@ body {
 .main_list_9 {
     flex-direction: column;
     justify-content: space-evenly;
+    height: 24dvh;
 }
 .main_list_info h3 {
     text-align: center;
@@ -649,4 +650,5 @@ body {
   text-align: center;
 }
 }
+
 
