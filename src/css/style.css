@@ -446,6 +446,11 @@ body {
     color: var(--text-menu-color);
   }
 @media (max-width: 777px) {
+     #body {
+    max-width: 777px; 
+    margin: 0 auto;    
+    width: 100%;
+}
   /* === ШАПКА === */
   .header {
     display: flex;
@@ -644,3 +649,4 @@ body {
   text-align: center;
 }
 }
+
